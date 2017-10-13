@@ -5,8 +5,10 @@
 
 void mandelbrot();
 double planePixelConverter(int pixel, int windowSize, double planeStart, double planeWidth);
-int zIterator(cplx z, cplx c);
+int zIterator(cplx c);
 cplx zFunction(cplx z, cplx c);
+void vectorIntPrinter(std::vector<std::vector<int>> vect);
+std::vector<std::vector<int>> getIterPlane();
 
 
 MandelbrotFunction::MandelbrotFunction(int iterations, int xPix, int yPix,
@@ -22,10 +24,10 @@ MandelbrotFunction::MandelbrotFunction(int iterations, int xPix, int yPix,
 
     //int planeMatrix[scopeX][scopeY];
 
-    for(int y = 0; y < scopeY; y++)
+    for(int y = 0; y < yPix; y++)
     {
         std::vector<int> tmpRow;
-        for(int x = 0; x < scopeX; x++)
+        for(int x = 0; x < xPix; x++)
         {
             tmpRow.push_back(0);
         }
@@ -53,12 +55,20 @@ double scopeMinX, scopeMinY, scopeX, scopeY;
 std::vector<std::vector<int>> iterPlane;
 
 
+std::vector<std::vector<int>> MandelbrotFunction::getIterPlane()
+{
+    return iterPlane;
+}
+
+
 void MandelbrotFunction::mandelbrot()
 {
     //int cplxScopedPlane[xPix][yPix];
-    std::vector<std::vector<int>> tmpIterPlane;
+    std::vector<std::vector<int>> tmpIterPlane = iterPlane;
     double cplxPointX;
     double cplxPointY;
+    std::cout << "size1: " << tmpIterPlane.size() << std::endl;
+    std::cout << "size2: " << tmpIterPlane.at(0).size() << std::endl;
 
     /// Loop through pixel matrix
     for(int y = 0; y < yPix; y++)
@@ -73,10 +83,12 @@ void MandelbrotFunction::mandelbrot()
             cplx c;
             c.Re = cplxPointX;
             c.Im = cplxPointY;
-            cplx z = c;
-            tmpIterPlane[x][y] = zIterator(z, c);
+            //std::cout << "Test 1" << std::endl;
+            std::cout << "y: " << y << ", x: " << x << std::endl;
+            tmpIterPlane.at(y).at(x) = MandelbrotFunction::zIterator(c);
         }
     }
+    MandelbrotFunction::vectorIntPrinter(tmpIterPlane);
     iterPlane = tmpIterPlane;
 }
 
@@ -90,22 +102,39 @@ double MandelbrotFunction::planePixelConverter(int pixel, int windowSize, double
 }
 
 
-int zIterator(cplx z, cplx c)
+int MandelbrotFunction::zIterator(cplx c)
 {
-    std::cout << "Test" << std::endl;
+    cplx z = c;
+    //std::cout << "Test 2" << std::endl;
     for(int i = 0; i < iterations; i++)
     {
         if(cplxRadius(z) > 2)
         {
             return i;
         }
-        z = zFunction(z, c);
+        z = MandelbrotFunction::zFunction(z, c);
     }
     return -1;  // Does not pass 2 within iterations
 }
 
 
-cplx zFunction(cplx z, cplx c)
+cplx MandelbrotFunction::zFunction(cplx z, cplx c)
 {
     return cplxAdd (cplxSquare(z), c);
+}
+
+
+
+void MandelbrotFunction::vectorIntPrinter(std::vector<std::vector<int>> vect)
+{
+    std::cout << "\nVector:\n";
+    for(int y = 0; y < vect.size(); y++)
+    {
+        for(int x = 0; x < vect[y].size(); x++)
+        {
+            std::cout << vect.at(x).at(y) << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 }

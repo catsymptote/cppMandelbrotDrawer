@@ -14,6 +14,7 @@ class MandelbrotFunction
         virtual ~MandelbrotFunction();
 
         void mandelbrot();
+        std::vector<std::vector<int>> getIterPlane();
 
     protected:
 
@@ -25,7 +26,10 @@ class MandelbrotFunction
         std::vector<std::vector<int>> iterPlane;
 
         double planePixelConverter(int pixel, int windowSize, double planeStart, double planeWidth);
+        int zIterator(cplx c);
         cplx zFunction(cplx z, cplx c);
+
+        void vectorIntPrinter(std::vector<std::vector<int>> vect);
 };
 
 #endif // MANDELBROTFUNCTION_H
