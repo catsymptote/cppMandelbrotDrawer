@@ -4,6 +4,7 @@
 
 #include "complex_maths.h"
 
+#include <iostream>
 #include <vector>
 
 class MandelbrotFunction
