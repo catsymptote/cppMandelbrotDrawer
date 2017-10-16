@@ -11,7 +11,7 @@ int main()
     std::cout << "Running..." << std::endl;
     int width   = 3840;
     int height  = 3840;
-    MandelbrotFunction zFunc(160, width, height, -2.0, -2.0, 4, 4);
+    MandelbrotFunction zFunc(127, width, height, -2.0, -2.0, 4, 4);
     zFunc.mandelbrot();
     std::cout << "z function complete" << std::endl;
     std::vector<std::vector<int>> iterPlane = zFunc.getIterPlane();

@@ -127,7 +127,8 @@ int MandelbrotFunction::zIterator(cplx c)
 
 cplx MandelbrotFunction::zFunction(cplx z, cplx c)
 {
-    return cplxAdd (cplxSquare(z), c);
+    //return cplxAdd (cplxSquare(z), c);
+    return cplxSquare(cplxAdd(cplxSquare(z), c));
 }
 
 
