@@ -59,7 +59,7 @@ std::vector<std::vector<int>> mathFunction::getIterPlane()
 }
 
 
-void mathFunction::mandelbrot()
+void mathFunction::planeIterator()
 {
     //std::cout << "pix:\t\t" << xPix << " : " << yPix << std::endl;
     //std::cout << "scopeMin:\t" << scopeMinX<< " : " << scopeMinY << std::endl;
@@ -88,7 +88,7 @@ void mathFunction::mandelbrot()
             //std::cout << "x:y" << x << ":" << y << ",\tc:\t" << c.Re << "+i" << c.Im << std::endl;
             //std::cout << "Test 1" << std::endl;
             //std::cout << "y: " << y << ", x: " << x << std::endl;
-            tmpIterPlane.at(y).at(x) = mathFunction::zIterator(c);
+            tmpIterPlane.at(y).at(x) = mathFunction::mandelbrot(c);
         }
     }
     //mathFunction::vectorIntPrinter(tmpIterPlane);
@@ -109,7 +109,7 @@ double mathFunction::planePixelConverter(int pixel, int windowSize, double plane
 }
 
 
-int mathFunction::zIterator(cplx c)
+int mathFunction::mandelbrot(cplx c)
 {
     cplx z = c;
     //std::cout << "Test 2" << std::endl;

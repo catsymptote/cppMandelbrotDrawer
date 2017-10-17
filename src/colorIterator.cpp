@@ -13,7 +13,6 @@ bool countUp = true;
 
 
 
-
 colorIterator::colorIterator(int incrementSize) //int r, int g, int b, int incrementSize=1)
 {
     //colorSpace[0] = r;
@@ -37,8 +36,6 @@ colorIterator::~colorIterator()
 {
     //dtor
 }
-
-
 
 
 

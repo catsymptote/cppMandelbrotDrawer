@@ -15,7 +15,7 @@ class mathFunction
             double scopeMinX, double scopeMinY, double scopeX, double scopeY);
         virtual ~mathFunction();
 
-        void mandelbrot();
+        void planeIterator();
         std::vector<std::vector<int>> getIterPlane();
 
     protected:
@@ -28,7 +28,7 @@ class mathFunction
         std::vector<std::vector<int>> iterPlane;
 
         double planePixelConverter(int pixel, int windowSize, double planeStart, double planeWidth);
-        int zIterator(cplx c);
+        int mandelbrot(cplx c);
         cplx zFunction(cplx z, cplx c);
 
         void vectorIntPrinter(std::vector<std::vector<int>> vect);
