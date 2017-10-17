@@ -52,6 +52,7 @@ void colorIterator::resetColorSpace()
 void colorIterator::changeColor(bool countUp, int steps)
 {
     //std::cout << "colorIterator. countUp:steps - " << countUp << ":" << steps << std::endl;
+    steps = steps%(colorSize*colorSpace.size());
     for(int i = 0; i < steps; i++)
     {
 

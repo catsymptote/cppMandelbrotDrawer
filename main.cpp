@@ -10,9 +10,9 @@
 int main()
 {
     std::cout << "Running..." << std::endl;
-    int width   = 3840;
-    int height  = 3840;
-    //MandelbrotFunction zFunc(250, width, height, -0.750045367143 -0.0001, 0.004786271734 -0.0001, 0.0002, 0.0002);    // avg 72k iters per pixel :|   http://colinlmiller.com/fractals/gallery.htm
+    int width   = 1000;
+    int height  = 1000;
+    //MandelbrotFunction zFunc(100000, width, height, -0.750045367143 -0.000000001, 0.004786271734 -0.000000001, 0.000000002, 0.000000002);    // avg 72k iters per pixel :|   http://colinlmiller.com/fractals/gallery.htm
     MandelbrotFunction zFunc(250, width, height, -2, -2, 4, 4);
     zFunc.mandelbrot();
     std::cout << "z function complete" << std::endl;
