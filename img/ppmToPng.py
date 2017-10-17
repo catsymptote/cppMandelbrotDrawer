@@ -34,6 +34,8 @@ if(img.readline() == "P3" or True):
         sY              = int(size_y)
         color           = int(f.readline())
         pixel_row = []
+        print("Reading file..")
+        print("####################")
         for line in f:
             pixel = line.split()
             pixel_row.append(pixel)
@@ -46,12 +48,13 @@ if(img.readline() == "P3" or True):
                 y += 1
                 x = 0
                 if(100*z/(sX*sY) > percentInt):
-                    print(str(percentInt) + "%")
+                    #print(str(percentInt) + "%")
+                    sys.stdout.write("#")
                     sys.stdout.flush()
-                    percentInt += 10
+                    percentInt += 5
             x += 1
             z += 1
-    print("File read")
+    print("\nFile read")
     #print("sX, sY")
     #print(sX)
     #print(sY)
@@ -63,6 +66,7 @@ if(img.readline() == "P3" or True):
 
     png_img = Image.new('RGB', (sX -1, sY -1), (0, 0, 0))
     png_pix = png_img.load()
+    print("New file created and loaded\n")
     #png_img.putdata(pixel_matrix)
 
     #print("lenPix, lenPix[x]")
@@ -71,9 +75,17 @@ if(img.readline() == "P3" or True):
     #print(pixel_matrix[len(pixel_matrix) -1])
     #print(pixel_matrix[0])
     #print()
-    print("New file created")
+    z = 0
+    percentInt = 0
+    print("Writing file..")
+    print("####################")
     for y in range(sY -1):
         for x in range(sX -1):
+            if(100*z/(sX*sY) > percentInt):
+                #print(str(percentInt) + "%")
+                sys.stdout.write("#")
+                sys.stdout.flush()
+                percentInt += 5
             #cake = pixel_matrix[y][x]
             #print(cake)
             #cookie = (int(cake[0]), int(cake[1]), int(cake[2]))
@@ -89,10 +101,12 @@ if(img.readline() == "P3" or True):
             mep = (int(pixel_matrix[y][x][0]), int(pixel_matrix[y][x][1]), int(pixel_matrix[y][x][2]))
             #print(mep)
             png_pix[x, y] = mep
-    print("Writing file..")
+            z += 1
+    print("\nSaving file..")
     png_img.save("img.png")
     print("File written")
-    sleep(3)
+    print("Script closing")
+    sleep(1)
 
 
 
