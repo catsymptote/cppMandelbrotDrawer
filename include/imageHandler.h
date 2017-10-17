@@ -2,9 +2,12 @@
 #define IMAGEHANDLER_H
 
 
+#include "colorIterator.h"
+
 #include <string>
 #include <fstream>
 #include <vector>
+#include <iostream>
 
 
 class imageHandler

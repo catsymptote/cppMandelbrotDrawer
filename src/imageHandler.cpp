@@ -31,10 +31,10 @@ std::string filePath    = "testImg.ppm";
 //std::string fileName;
 
 /// Image format variables
-std::string magicNumber;// = "P3";
-int         width;//       = 3;
-int         height;//      = 2;
-int         colorRange;//  = 255;
+std::string magicNumber;    // = "P3";
+int         width;          // = 3;
+int         height;         // = 2;
+int         colorRange;     // = 255;
 
 std::vector<std::vector<int>> m_iterPlane;
 std::vector<int> ppmVector;
@@ -48,31 +48,37 @@ int testPic[3*2*3] = {
 
 std::vector<int> imageHandler::vect2ToVect(std::vector<std::vector<int>> plane)
 {
-    int k = 5; // Color constant
-    int color;
+    int k = 20; // Color constant
+    colorIterator cIter(k);
+
+    //int color;
     std::vector<int> vect;
     for(int y = 0; y < plane.size(); y++)
     {
         for(int x = 0; x < plane.at(y).size(); x++)
         {
-
+            int pixIter = plane.at(y).at(x);
 
             //vect.push_back(plane.at(y).at(x));
             // Color fixer
 
-            color = k*plane.at(y).at(x);
-            if(color > 255)
-            {
-                color = 255;
-            }
+            //color = k*pixIter;
+            //if(color > 255)
+            //{
+            //    color = 255;
+            //}
 
-            if(plane.at(y).at(x) != -1)
+            if(pixIter != -1)
             {
-                vect.push_back(color);
-                vect.push_back(color);
-                vect.push_back(255);
+                //std::cout << "x:y - " << x << ":" << y << ",\tpixIter: " << pixIter << std::endl;
+                std::vector<int> pixelColor = cIter.incrementColor(pixIter);
+                vect.insert(vect.end(), pixelColor.begin(), pixelColor.end());
+                cIter.resetColorSpace();
+                //vect.push_back(color);
+                //vect.push_back(color);
+                //vect.push_back(255);
             }
-            else if(plane.at(y).at(x) == -1)
+            else if(pixIter == -1)
             {
                 vect.push_back(0);
                 vect.push_back(0);
