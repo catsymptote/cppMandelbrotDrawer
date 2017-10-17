@@ -4,19 +4,16 @@
 /// PPM / PGM / PBM guide: http://utk.claranguyen.me/guide/PPM.html
 /// For simple PPM -> PNG conversion: https://convertio.co/ppm-png/
 
-std::vector<int> vect2ToVect(std::vector<std::vector<int>> plane);
+std::vector<int> vect2ToVect(std::vector<std::vector<int> > plane);
 
 
-imageHandler::imageHandler(std::vector<std::vector<int>> &iterPlane, std::string filePath, std::string magicNumber, int width, int height, int colorRange)
-//imageHandler::imageHandler()
+imageHandler::imageHandler(std::vector<std::vector<int> > &iterPlane, std::string filePath, std::string magicNumber, int width, int height, int colorRange)
 {
-    //someArray[];
     this->filePath      = filePath;
     this->magicNumber   = magicNumber;
     this->width         = width;
     this->height        = height;
     this->colorRange    = colorRange;
-    //this->m_iterPlane   = iterPlane;
     this->ppmVector     = vect2ToVect(iterPlane);
 }
 
@@ -25,18 +22,16 @@ imageHandler::~imageHandler()
     //dtor
 }
 
+
 /// File vaiables
 std::string filePath    = "testImg.ppm";
-//std::string filePath;
-//std::string fileName;
 
 /// Image format variables
-std::string magicNumber;    // = "P3";
-int         width;          // = 3;
-int         height;         // = 2;
-int         colorRange;     // = 255;
-
-std::vector<std::vector<int>> m_iterPlane;
+std::string magicNumber;
+int         width;
+int         height;
+int         colorRange;
+std::vector<std::vector<int> > m_iterPlane;
 std::vector<int> ppmVector;
 
 int testPic[3*2*3] = {
@@ -46,12 +41,11 @@ int testPic[3*2*3] = {
 
 
 
-std::vector<int> imageHandler::vect2ToVect(std::vector<std::vector<int>> plane)
+std::vector<int> imageHandler::vect2ToVect(std::vector<std::vector<int> > plane)
 {
     int k = 20; // Color constant
     colorIterator cIter(k);
 
-    //int color;
     std::vector<int> vect;
     for(int y = 0; y < plane.size(); y++)
     {
@@ -59,24 +53,11 @@ std::vector<int> imageHandler::vect2ToVect(std::vector<std::vector<int>> plane)
         {
             int pixIter = plane.at(y).at(x);
 
-            //vect.push_back(plane.at(y).at(x));
-            // Color fixer
-
-            //color = k*pixIter;
-            //if(color > 255)
-            //{
-            //    color = 255;
-            //}
-
             if(pixIter != -1)
             {
-                //std::cout << "x:y - " << x << ":" << y << ",\tpixIter: " << pixIter << std::endl;
                 std::vector<int> pixelColor = cIter.incrementColor(pixIter);
                 vect.insert(vect.end(), pixelColor.begin(), pixelColor.end());
                 cIter.resetColorSpace();
-                //vect.push_back(color);
-                //vect.push_back(color);
-                //vect.push_back(255);
             }
             else if(pixIter == -1)
             {
@@ -92,15 +73,11 @@ std::vector<int> imageHandler::vect2ToVect(std::vector<std::vector<int>> plane)
 
 void imageHandler::makeImgFile()
 {
-    //bool success = true;
-
     std::ofstream imgFile(filePath);
     imgFile << magicNumber << "\n" << width << " " << height << "\n" << colorRange << "\n";
 
-    //for(int y = 0; y < 1; y++)
-    //{
     int pixPerLine = 10;
-    int pixSize = 3;    // RGB == 3, RGBA == 4, etc
+    int pixSize = 3;    // RGB == 3, RGBA == 4
     int counter = 0;
 
     for(int x = 0; x < ppmVector.size(); x++)
@@ -108,39 +85,11 @@ void imageHandler::makeImgFile()
         imgFile << ppmVector.at(x);
         if(x%pixSize != pixSize -1)
         {
-             imgFile << "\t";
+            imgFile << "\t";
         }
         else
         {
             imgFile << "\n";
         }
-
     }
-
-    /*
-    /// Old version
-    for(int x = 0; x < ppmVector.size(); x++)
-    {
-        imgFile << ppmVector.at(x) << "\t";
-
-        if(x%pixSize == pixSize -1)
-        {
-            if(counter%pixPerLine == pixPerLine -1)
-            {
-                imgFile << "\n";
-            counter = 0;
-            }
-            else
-            {
-                imgFile << "\t\t";
-                counter++;
-            }
-
-        }
-
-    }
-    */
-    //}
-
-    //return success;
 }

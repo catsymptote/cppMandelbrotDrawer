@@ -13,23 +13,13 @@ bool countUp = true;
 
 
 
-colorIterator::colorIterator(int incrementSize) //int r, int g, int b, int incrementSize=1)
+colorIterator::colorIterator(int incrementSize)
 {
-    //colorSpace[0] = r;
-    //colorSpace[1] = g;
-    //colorSpace[2] = b;
     this->incrementSize = incrementSize;
+
     colorSpace.push_back(0);
     colorSpace.push_back(0);
     colorSpace.push_back(150);
-
-    /* Color space validity checker.
-    if(
-       colorSpace[0] > colorSize
-    )
-    {
-       colorSpace[0] = colorSize;
-    }*/
 }
 
 colorIterator::~colorIterator()
@@ -48,30 +38,11 @@ void colorIterator::resetColorSpace()
 
 void colorIterator::changeColor(bool countUp, int steps)
 {
-    //std::cout << "colorIterator. countUp:steps - " << countUp << ":" << steps << std::endl;
     steps = steps%(colorSize*colorSpace.size());
     for(int i = 0; i < steps; i++)
     {
-
-        //if(colorSpace[2] < 255)
-        //{
-        //    colorSpace[0] += incrementSize;
-        //}
-
-
         if(countUp)
         {
-
-            //std::cout << "Hi there1" << std::endl;
-            //std::cout << "colorSize - incrementSize +1: \t" << colorSize - incrementSize +1 << std::endl;
-            //std::cout << "colorSize \t" << colorSize << std::endl;
-            //std::cout << "incrementSize \t" << incrementSize << std::endl;
-            //std::cout << colorSpace.size() << std::endl;
-            //std::cout << colorSpace.at(0) << std::endl;
-            //std::cout << colorSpace.at(1) << std::endl;
-            //std::cout << colorSpace.at(2) << std::endl;
-
-
             /// Blue not max. Blue++
             if(colorSpace[2] < maxLim)
             {
@@ -95,7 +66,6 @@ void colorIterator::changeColor(bool countUp, int steps)
                 colorSpace[0] = colorSize;
                 countUp = !countUp;
             }
-            //std::cout << "Hi there6" << std::endl;
         }
         else
         {

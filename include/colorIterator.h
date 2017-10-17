@@ -9,7 +9,7 @@
 class colorIterator
 {
     public:
-        colorIterator(int incrementSize); //int r, int g, int b, int incrementSize);
+        colorIterator(int incrementSize);
         virtual ~colorIterator();
 
         std::vector<int> incrementColor(int steps);
