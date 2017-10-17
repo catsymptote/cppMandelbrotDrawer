@@ -2,18 +2,18 @@
 #define MANDELBROTFUNCTION_H
 
 
-#include "complex_maths.h"
+#include "complexMath.h"
 
 #include <iostream>
 #include <vector>
 
 
-class MandelbrotFunction
+class mathFunction
 {
     public:
-        MandelbrotFunction(int iterations, int xPix, int yPix,
+        mathFunction(int iterations, int xPix, int yPix,
             double scopeMinX, double scopeMinY, double scopeX, double scopeY);
-        virtual ~MandelbrotFunction();
+        virtual ~mathFunction();
 
         void mandelbrot();
         std::vector<std::vector<int>> getIterPlane();

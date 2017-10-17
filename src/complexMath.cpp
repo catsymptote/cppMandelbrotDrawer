@@ -1,4 +1,4 @@
-#include "complex_maths.h"
+#include "complexMath.h"
 
 
 cplx cplxAdd(cplx c_1, cplx c_2)

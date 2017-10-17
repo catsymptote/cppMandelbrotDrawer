@@ -1,4 +1,4 @@
-#include "MandelbrotFunction.h"
+#include "mathFunction.h"
 
 
 //void mandelbrot();
@@ -9,7 +9,7 @@
 //std::vector<std::vector<int>> getIterPlane();
 
 
-MandelbrotFunction::MandelbrotFunction(int iterations, int xPix, int yPix,
+mathFunction::mathFunction(int iterations, int xPix, int yPix,
         double scopeMinX, double scopeMinY, double scopeX, double scopeY)
 {
     this->iterations    = iterations;
@@ -35,7 +35,7 @@ MandelbrotFunction::MandelbrotFunction(int iterations, int xPix, int yPix,
 }
 
 
-MandelbrotFunction::~MandelbrotFunction()
+mathFunction::~mathFunction()
 {
     //dtor
 }
@@ -53,13 +53,13 @@ double scopeMinX, scopeMinY, scopeX, scopeY;
 std::vector<std::vector<int>> iterPlane;
 
 
-std::vector<std::vector<int>> MandelbrotFunction::getIterPlane()
+std::vector<std::vector<int>> mathFunction::getIterPlane()
 {
     return iterPlane;
 }
 
 
-void MandelbrotFunction::mandelbrot()
+void mathFunction::mandelbrot()
 {
     //std::cout << "pix:\t\t" << xPix << " : " << yPix << std::endl;
     //std::cout << "scopeMin:\t" << scopeMinX<< " : " << scopeMinY << std::endl;
@@ -88,16 +88,16 @@ void MandelbrotFunction::mandelbrot()
             //std::cout << "x:y" << x << ":" << y << ",\tc:\t" << c.Re << "+i" << c.Im << std::endl;
             //std::cout << "Test 1" << std::endl;
             //std::cout << "y: " << y << ", x: " << x << std::endl;
-            tmpIterPlane.at(y).at(x) = MandelbrotFunction::zIterator(c);
+            tmpIterPlane.at(y).at(x) = mathFunction::zIterator(c);
         }
     }
-    //MandelbrotFunction::vectorIntPrinter(tmpIterPlane);
+    //mathFunction::vectorIntPrinter(tmpIterPlane);
     iterPlane = tmpIterPlane;
 }
 
 
 /// Converts from pixel/window location to point in the windowed part of the complex plane.
-double MandelbrotFunction::planePixelConverter(int pixel, int windowSize, double planeStart, double planeWidth)
+double mathFunction::planePixelConverter(int pixel, int windowSize, double planeStart, double planeWidth)
 {
     //std::cout << "pixel:\t" << pixel << std::endl;// << ",\twindowSize:\t" << windowSize << std::endl;
     //std::cout << "planeStart:\t" << planeStart << ",\tplaneWidth:\t" << planeWidth << std::endl;
@@ -109,7 +109,7 @@ double MandelbrotFunction::planePixelConverter(int pixel, int windowSize, double
 }
 
 
-int MandelbrotFunction::zIterator(cplx c)
+int mathFunction::zIterator(cplx c)
 {
     cplx z = c;
     //std::cout << "Test 2" << std::endl;
@@ -119,13 +119,13 @@ int MandelbrotFunction::zIterator(cplx c)
         {
             return i;
         }
-        z = MandelbrotFunction::zFunction(z, c);
+        z = mathFunction::zFunction(z, c);
     }
     return -1;  // Does not pass 2 within iterations
 }
 
 
-cplx MandelbrotFunction::zFunction(cplx z, cplx c)
+cplx mathFunction::zFunction(cplx z, cplx c)
 {
     //return cplxAdd (cplxSquare(z), c);
     return cplxAdd(cplxSquare(z), c);
@@ -133,7 +133,7 @@ cplx MandelbrotFunction::zFunction(cplx z, cplx c)
 
 
 
-void MandelbrotFunction::vectorIntPrinter(std::vector<std::vector<int>> vect)
+void mathFunction::vectorIntPrinter(std::vector<std::vector<int>> vect)
 {
     std::cout << "\nVector:\n";
     for(int y = 0; y < vect.size(); y++)
