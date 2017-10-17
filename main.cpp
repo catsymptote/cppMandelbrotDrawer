@@ -1,6 +1,7 @@
 #include "complex_maths.h"
 #include "MandelbrotFunction.h"
 #include "imageHandler.h"
+#include "colorIterator.h"
 
 #include <iostream>
 #include <vector>
@@ -11,7 +12,8 @@ int main()
     std::cout << "Running..." << std::endl;
     int width   = 3840;
     int height  = 3840;
-    MandelbrotFunction zFunc(127, width, height, -2.0, -2.0, 4, 4);
+    //MandelbrotFunction zFunc(250, width, height, -0.750045367143 -0.0001, 0.004786271734 -0.0001, 0.0002, 0.0002);    // avg 72k iters per pixel :|   http://colinlmiller.com/fractals/gallery.htm
+    MandelbrotFunction zFunc(250, width, height, -2, -2, 4, 4);
     zFunc.mandelbrot();
     std::cout << "z function complete" << std::endl;
     std::vector<std::vector<int>> iterPlane = zFunc.getIterPlane();
