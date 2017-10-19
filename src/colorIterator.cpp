@@ -2,14 +2,41 @@
 
 
 
-
 std::vector<int> colorSpace;
 int incrementSize;
 int colorSize = 255;
 int maxLim = colorSize - incrementSize +1;
 int minLim = 0 + incrementSize +1 +50;
 int minColor = 50;
-bool countUp = true;
+bool countUp = false;
+
+
+
+/// Extra set methods.
+void colorIterator::setIncrementSize(int incrementSize)
+{
+    this->incrementSize = incrementSize;
+}
+void colorIterator::setColorSize()
+{
+    this->colorSize = colorSize;
+}
+void colorIterator::setColorMaxLim(int maxLim)
+{
+    this->maxLim = maxLim;
+}
+void colorIterator::setColorMinLim(int minLim)
+{
+    this->minLim = minLim;
+}
+void colorIterator::setMinColor(int minColor)
+{
+    this->minColor = minColor;
+}
+void colorIterator::setCountUp(bool countUp)
+{
+    this->countUp = true;
+}
 
 
 
@@ -31,8 +58,8 @@ colorIterator::~colorIterator()
 
 void colorIterator::resetColorSpace()
 {
-    colorSpace.at(0) = 0;
-    colorSpace.at(1) = 0;
+    colorSpace.at(0) = 150;
+    colorSpace.at(1) = 150;
     colorSpace.at(2) = 150;
 }
 
