@@ -56,6 +56,7 @@ std::vector<int> imageHandler::vect2ToVect(std::vector<std::vector<int> > plane)
             if(pixIter != -1)
             {
                 std::vector<int> pixelColor = cIter.incrementColor(pixIter);
+                //std::vector<int> pixelColor = cIter.incrementColor(1);
                 vect.insert(vect.end(), pixelColor.begin(), pixelColor.end());
                 cIter.resetColorSpace();
             }
