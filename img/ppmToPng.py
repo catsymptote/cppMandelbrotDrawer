@@ -106,7 +106,7 @@ if(img.readline() == "P3" or True):
     png_img.save("img.png")
     print("File written")
     print("Script closing")
-    sleep(1)
+    #sleep(1)
 
 
 
