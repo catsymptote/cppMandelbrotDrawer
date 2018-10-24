@@ -1,9 +1,9 @@
 namespace cmd
 {
-    std::string tmpDir = "imgTmp\\";
-    std::string outputDir = "img\\";
-    std::string inputFExt        = ".ppm";
-    std::string outputFExt = ".png";
+    std::string tmpDir      = "imgTmp\\";
+    std::string outputDir   = "img\\";
+    std::string inputFExt   = ".ppm";
+    std::string outputFExt  = ".png";
 
 
     std::string execCmd(const char* cmd)
@@ -34,5 +34,13 @@ namespace cmd
         std::string mvCmd = "mv " + tmpDir + fname + outputFExt + " " + outputDir + fname + outputFExt;
         char *mvChr = &mvCmd[0];
         std::cout << execCmd(mvChr) << std::endl;
+    }
+
+
+    void open(const char* fname)
+    {
+        std::string startCmd = "start " + outputDir + fname + outputFExt;
+        char *startChr = &startCmd[0];
+        std::cout << execCmd(startChr) << std::endl;
     }
 }
