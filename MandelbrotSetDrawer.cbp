@@ -34,6 +34,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/cmd.h" />
 		<Unit filename="include/colorIterator.h" />
 		<Unit filename="include/complexMath.h" />
 		<Unit filename="include/imageHandler.h" />
