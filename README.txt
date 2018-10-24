@@ -1,5 +1,4 @@
-Program is supposed to (create Mandelbrot set):
-- Use Python to start and set parameters.
-- Let C++ handle all the mathematical iterative calculations.
-- Export to Python, either through marshalling or (most likely) export as ppm.
-- Python will the result (from marshalling or ppm->png conversion) into a picture.
+This program generates png-images of Mandelbrot set
+User can (in code) modify zoom, center, iterations, filename, etc.
+Made by Catsymptote/Paul
+catsymptote@gmail.com
