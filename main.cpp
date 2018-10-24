@@ -2,11 +2,13 @@
 #include "mathFunction.h"
 #include "imageHandler.h"
 #include "colorIterator.h"
+#include "cmd.h"
 
 #include <iostream>
 #include <vector>
 
 
+/*
 std::string execCmd(const char* cmd)
 {
     std::cout << cmd << std::endl;
@@ -41,36 +43,43 @@ void runCMD(const char* fileName)
     char *startChr = &startCmd[0];
     //std::cout << execCmd(startChr) << std::endl;
 }
+*/
 
 
 int main()
 {
     std::cout << "Running..." << std::endl;
     /// Set variables
-    int imageWidth          = 1024 + 1;
-    int imageHeight         = 1024 + 1;
-    int maxIterations       = 0;
+    int imageWidth          = 4*1024 + 1;
+    int imageHeight         = 4*1024 + 1;
+
     double fieldMinX        = -2.1;
     double fieldMinY        = -2.1;
     double fieldSizeX       = 4.2;
     double fieldSizeY       = 4.2;
+
     std::string fnStart     = "img";
     std::string fExt        = ".ppm";
-    std::string tmpDir      = "imgTmp/";
-    int step                = 5;
-    int totalSteps          = 10 + 1;
-    int stepStart           = 0;
+    std::string tmpDir      = "imgTmp\\";
 
-    for (int i = stepStart; i < totalSteps; i++)
+    int maxIterations       = 100;
+    int outputImages        = 1;
+    int deltaIterStep       = 1;
+    int totalSteps          = outputImages + maxIterations;
+
+
+    for (int i = 0; i < outputImages; i++)
     {
         /// Generate file name
-        std::string cmdStr = fnStart + std::to_string(i);// + fExt;
+        std::string cmdStr = fnStart;
+        if (outputImages > 1)
+            cmdStr += std::to_string(i);
         char *cmdChr = &cmdStr[0];
 
         /// Construct the Z-function and run its plane iterator.
         //mathFunction zFunc(100000, imageWidth, imageHeight, -0.750045367143 -0.000000001, 0.004786271734 -0.000000001, 0.000000002, 0.000000002);    // avg 72k iters per pixel :|   http://colinlmiller.com/fractals/gallery.htm
         mathFunction zFunc(maxIterations, imageWidth, imageHeight, fieldMinX, fieldMinY, fieldSizeX, fieldSizeY);
-        maxIterations += step;
+        maxIterations += deltaIterStep;
         zFunc.planeIterator();
         std::cout << "z function complete" << std::endl;
         std::vector<std::vector<int> > iterPlane = zFunc.getIterPlane();
@@ -82,29 +91,22 @@ int main()
     }
 
     /// Compile images to png
-    std::cout << execCmd("python ppmToPng.py") << std::endl;
+    std::cout << "\nPython:" << std::endl;
+    std::cout << cmd::execCmd("python ppmToPng.py") << std::endl;
 
-    for (int i = stepStart; i < totalSteps; i++)
+    for (int i = 0; i < outputImages; i++)
     {
         /// Generate file name
-        std::string cmdStr = fnStart + std::to_string(i);// + fExt;
+        std::string cmdStr = fnStart;
+        if (outputImages > 1)
+            cmdStr += std::to_string(i);
         char *cmdChr = &cmdStr[0];
 
-         /// Place in img/ folder.
-        //runCMD(cmdChr);
-        std::string delCmd = "del " + tmpDir + cmdStr + ".ppm";
-        char *delChr = &delCmd[0];
-        std::cout << execCmd(delChr) << std::endl;
+        std::cout << "\nCommands:" << std::endl;
+        cmd::del(cmdChr);
+        cmd::mov(cmdChr);
 
-        std::string mvCmd = "mv " + tmpDir + cmdStr + ".png" + " img/" + cmdStr + ".png";
-        char *mvChr = &mvCmd[0];
-        std::cout << execCmd(mvChr) << std::endl;
-
-        //std::string startCmd = "start img/" + cmdStr + ".png";
-        //char *startChr = &startCmd[0];
-        //std::cout << execCmd(startChr) << std::endl;
-
-        std::cout << "Finished!" << std::endl;
+        std::cout << "\nProgram finished!" << std::endl;
     }
     return 0;
 }
