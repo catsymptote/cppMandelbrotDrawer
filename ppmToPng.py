@@ -34,7 +34,7 @@ for imag in fileList:
         percentInt = 0
         
         #while(there are lines left):
-        print("Open file..")
+#        print("Open file..")
         with open(imag) as f:
             magicNumber     = f.readline()
             size_x, size_y  = f.readline().split()
@@ -42,8 +42,8 @@ for imag in fileList:
             sY              = int(size_y)
             color           = int(f.readline())
             pixel_row = []
-            print("Reading file..")
-            print("####################")
+#            print("Reading file..")
+#            print("####################")
             for line in f:
                 pixel = line.split()
                 pixel_row.append(pixel)
@@ -57,12 +57,12 @@ for imag in fileList:
                     x = 0
                     if(100*z/(sX*sY) > percentInt):
                         #print(str(percentInt) + "%")
-                        sys.stdout.write("#")
-                        sys.stdout.flush()
+#                        sys.stdout.write("#")
+#                        sys.stdout.flush()
                         percentInt += 5
                 x += 1
                 z += 1
-        print("\nFile read")
+#        print("\nFile read")
         #print("sX, sY")
         #print(sX)
         #print(sY)
@@ -74,7 +74,7 @@ for imag in fileList:
 
         png_img = Image.new('RGB', (sX -1, sY -1), (0, 0, 0))
         png_pix = png_img.load()
-        print("New file created and loaded\n")
+#        print("New file created and loaded\n")
         #png_img.putdata(pixel_matrix)
 
         #print("lenPix, lenPix[x]")
@@ -85,14 +85,14 @@ for imag in fileList:
         #print()
         z = 0
         percentInt = 0
-        print("Writing file..")
-        print("####################")
+#        print("Writing file..")
+#        print("####################")
         for y in range(sY -1):
             for x in range(sX -1):
                 if(100*z/(sX*sY) > percentInt):
                     #print(str(percentInt) + "%")
-                    sys.stdout.write("#")
-                    sys.stdout.flush()
+#                    sys.stdout.write("#")
+#                    sys.stdout.flush()
                     percentInt += 5
                 #cake = pixel_matrix[y][x]
                 #print(cake)
@@ -110,12 +110,13 @@ for imag in fileList:
                 #print(mep)
                 png_pix[x, y] = mep
                 z += 1
-        print("\nSaving file..")
+#        print("\nSaving file..")
         imag = imag[:-3]
         imag += "png"
         png_img.save(imag)
-        print("File written")
-        print("Script closing")
+#        print("File written")
+#        print("Script closing")
+        print("Conversion successful (Python)")
         #sleep(1)
 
 
