@@ -50,8 +50,8 @@ int main()
 {
     std::cout << "Running..." << std::endl;
     /// Set variables
-    int imageWidth          = 4*1024 + 1;
-    int imageHeight         = 4*1024 + 1;
+    int imageWidth          = 1024 + 1;
+    int imageHeight         = 1024 + 1;
 
     double fieldMinX        = -2.1;
     double fieldMinY        = -2.1;
@@ -74,7 +74,7 @@ int main()
         std::string cmdStr = fnStart;
         if (outputImages > 1)
             cmdStr += std::to_string(i);
-        char *cmdChr = &cmdStr[0];
+        char *fname = &cmdStr[0];
 
         /// Construct the Z-function and run its plane iterator.
         //mathFunction zFunc(100000, imageWidth, imageHeight, -0.750045367143 -0.000000001, 0.004786271734 -0.000000001, 0.000000002, 0.000000002);    // avg 72k iters per pixel :|   http://colinlmiller.com/fractals/gallery.htm
@@ -85,7 +85,7 @@ int main()
         std::vector<std::vector<int> > iterPlane = zFunc.getIterPlane();
 
         /// Construct and make the PPM image of the field.
-        imageHandler imag(iterPlane, tmpDir + cmdChr + fExt, "P3", imageWidth, imageHeight, 255);
+        imageHandler imag(iterPlane, tmpDir + fname + fExt, "P3", imageWidth, imageHeight, 255);
         std::cout << "File creation initialized" << std::endl;
         imag.makeImgFile();
     }
@@ -100,11 +100,13 @@ int main()
         std::string cmdStr = fnStart;
         if (outputImages > 1)
             cmdStr += std::to_string(i);
-        char *cmdChr = &cmdStr[0];
+        char *fname = &cmdStr[0];
 
         std::cout << "\nCommands:" << std::endl;
-        cmd::del(cmdChr);
-        cmd::mov(cmdChr);
+        cmd::del(fname);
+        cmd::mov(fname);
+        if(outputImages < 2)
+            cmd::open(fname);
 
         std::cout << "\nProgram finished!" << std::endl;
     }
