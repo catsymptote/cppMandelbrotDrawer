@@ -44,9 +44,14 @@ colorIterator::colorIterator(int incrementSize)
 {
     this->incrementSize = incrementSize;
 
+    //this->resetColorSpace();
+
+    this->setColorMaxLim(this->colorSize - incrementSize +1);
+
     colorSpace.push_back(0);
     colorSpace.push_back(0);
-    colorSpace.push_back(150);
+    colorSpace.push_back(200);
+
 }
 
 colorIterator::~colorIterator()
@@ -58,9 +63,9 @@ colorIterator::~colorIterator()
 
 void colorIterator::resetColorSpace()
 {
-    colorSpace.at(0) = 150;
-    colorSpace.at(1) = 150;
-    colorSpace.at(2) = 150;
+    colorSpace.at(0) = 0;
+    colorSpace.at(1) = 0;
+    colorSpace.at(2) = 200;
 }
 
 void colorIterator::changeColor(bool countUp, int steps)
