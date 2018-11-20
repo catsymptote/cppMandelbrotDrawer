@@ -50,7 +50,7 @@ colorIterator::colorIterator(int incrementSize)
 
     colorSpace.push_back(0);
     colorSpace.push_back(0);
-    colorSpace.push_back(200);
+    colorSpace.push_back(100);
 
 }
 
@@ -65,7 +65,7 @@ void colorIterator::resetColorSpace()
 {
     colorSpace.at(0) = 0;
     colorSpace.at(1) = 0;
-    colorSpace.at(2) = 200;
+    colorSpace.at(2) = 100;
 }
 
 void colorIterator::changeColor(bool countUp, int steps)

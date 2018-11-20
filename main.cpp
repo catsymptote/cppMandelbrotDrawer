@@ -50,8 +50,8 @@ int main()
 {
     std::cout << "Running..." << std::endl;
     /// Set variables
-    int imageWidth          = 1024 + 1;
-    int imageHeight         = 1024 + 1;
+    int imageWidth          = 7680 + 1;
+    int imageHeight         = 7680 + 1;
 
     double fieldMinX        = -2.1;
     double fieldMinY        = -2.1;
@@ -62,7 +62,7 @@ int main()
     std::string fExt        = ".ppm";
     std::string tmpDir      = "imgTmp\\";
 
-    int maxIterations       = 100;
+    int maxIterations       = 512;
     int outputImages        = 1;
     int deltaIterStep       = 1;
     int totalSteps          = outputImages + maxIterations;
