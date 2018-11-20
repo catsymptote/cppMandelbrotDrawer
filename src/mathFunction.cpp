@@ -85,7 +85,7 @@ int mathFunction::mandelbrot(cplx c)
     cplx z = c;
     for(int i = 0; i < iterations; i++)
     {
-        if(z.radius() > 2)
+        if(!z > 2)
         {
             return i;
         }
@@ -97,7 +97,7 @@ int mathFunction::mandelbrot(cplx c)
 
 cplx mathFunction::zFunction(cplx z, cplx c)
 {
-    return z.multiplication(z).addition(c);
+    return (z^2) + c;
 }
 
 

@@ -68,28 +68,43 @@ double cplx::radius()
 }
 
 
-/*
-cplx cplxAdd(cplx c_1, cplx c_2)
+//////////////////////////
+// Operator overloading //
+//////////////////////////
+
+cplx cplx::operator + (const cplx p)
 {
-    cplx sum;
-    sum.Re = c_1.Re + c_2.Re;
-    sum.Im = c_1.Im + c_2.Im;
-    return sum;
+    return this->addition(p);
 }
 
-
-cplx cplxSquare(cplx c_1)
+cplx cplx::operator - (const cplx p)
 {
-    cplx power;
-    power.Re = pow(c_1.Re, 2) - pow(c_1.Im, 2);
-    power.Im = 2 * c_1.Re * c_1.Im;
-    return power;
+    return this->subtraction(p);
 }
 
-
-double cplxRadius(cplx c_1)
+cplx cplx::operator * (const cplx p)
 {
-    double radius = sqrt(pow(c_1.Re, 2) + pow(c_1.Im, 2));
-    return radius;
+    return this->multiplication(p);
 }
-*/
+
+cplx cplx::operator / (const cplx p)
+{
+    return this->division(p);
+}
+
+cplx cplx::operator ^ (int exp)
+{
+    cplx q;
+    q.Re = this->Re;
+    q.Im = this->Im;
+
+    for(int i = 1; i < exp; i++)
+        q = q*q;
+
+    return q;
+}
+
+double cplx::operator ! ()
+{
+    return this->radius();
+}
