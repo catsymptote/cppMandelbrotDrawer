@@ -17,18 +17,6 @@ public:
     void    setRe(double Re);
     void    setIm(double Im);
 
-    // Real and imaginary variables
-    double  Re;
-    double  Im;
-
-//private:
-    // Mathematical methods
-    cplx    addition(cplx p);
-    cplx    subtraction(cplx p);
-    cplx    multiplication(cplx p);
-    cplx    division(cplx p);
-    double  radius();
-
     // Operator overloading
     cplx    operator + (cplx p);
     cplx    operator - (cplx p);
@@ -37,6 +25,17 @@ public:
     cplx    operator ^ (int exp);
     double  operator ! ();
 
+    // Real and imaginary variables
+    double  Re;
+    double  Im;
+
+private:
+    // Mathematical methods
+    cplx    addition(cplx p);
+    cplx    subtraction(cplx p);
+    cplx    multiplication(cplx p);
+    cplx    division(cplx p);
+    double  radius();
 };
 
 #endif // COMPLEX_MATHS_H

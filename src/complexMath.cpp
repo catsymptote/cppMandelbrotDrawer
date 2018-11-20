@@ -19,46 +19,36 @@ cplx::cplx(double Re, double Im)
 cplx::~cplx() {}
 
 
-///////////////////////
-// Get/set functions //
-///////////////////////
-
-double cplx::getRe() { return this->Re; }
-double cplx::getIm() { return this->Im; }
-void cplx::setRe(double Re) { this->Re = Re; }
-void cplx::setIm(double Im) { this->Im = Im; }
-
-
 ////////////////////
 // Math functions //
 ////////////////////
 
 cplx cplx::addition(cplx p)
 {
-    double Real = this->Re + p.getRe();
-    double Imag = this->Im + p.getIm();
+    double Real = this->Re + p.Re;
+    double Imag = this->Im + p.Im;
     return cplx(Real, Imag);
 }
 
 cplx cplx::subtraction(cplx p)
 {
-    double Real = this->Re - p.getRe();
-    double Imag = this->Im - p.getIm();
+    double Real = this->Re - p.Re;
+    double Imag = this->Im - p.Im;
     return cplx(Real, Imag);
 }
 
 cplx cplx::multiplication(cplx p)
 {
-    double Real = this->Re * p.getRe() - this->Im * p.getIm();
-    double Imag = this->Re * p.getIm() + this->Im * p.getRe();
+    double Real = this->Re * p.Re - this->Im * p.Im;
+    double Imag = this->Re * p.Im + this->Im * p.Re;
     return cplx(Real, Imag);
 }
 
 cplx cplx::division(cplx p)
 {
-    double Real = this->Re * p.getRe() + this->Im * p.getIm();
-    double Imag = p.getRe() * this->Im - this->Re * p.getIm();
-    double divisor = pow(this->Re, 2) + this->Im * p.getIm();
+    double Real = this->Re * p.Re + this->Im * p.Im;
+    double Imag = p.Re * this->Im - this->Re * p.Im;
+    double divisor = pow(this->Re, 2) + this->Im * p.Im;
     return cplx(Real/divisor, Imag/divisor);
 }
 
