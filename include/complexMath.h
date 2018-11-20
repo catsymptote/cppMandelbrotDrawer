@@ -11,12 +11,6 @@ public:
     cplx(double Re, double Im);
     ~cplx();
 
-    // Get and set methods
-    double  getRe();
-    double  getIm();
-    void    setRe(double Re);
-    void    setIm(double Im);
-
     // Operator overloading
     cplx    operator + (cplx p);
     cplx    operator - (cplx p);
