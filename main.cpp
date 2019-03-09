@@ -50,8 +50,8 @@ int main()
 {
     std::cout << "Running..." << std::endl;
     /// Set variables
-    int imageWidth          = 7680 + 1;
-    int imageHeight         = 7680 + 1;
+    int imageWidth          = 512 + 1;
+    int imageHeight         = 512 + 1;
 
     double fieldMinX        = -2.1;
     double fieldMinY        = -2.1;
@@ -80,7 +80,8 @@ int main()
         //mathFunction zFunc(100000, imageWidth, imageHeight, -0.750045367143 -0.000000001, 0.004786271734 -0.000000001, 0.000000002, 0.000000002);    // avg 72k iters per pixel :|   http://colinlmiller.com/fractals/gallery.htm
         mathFunction zFunc(maxIterations, imageWidth, imageHeight, fieldMinX, fieldMinY, fieldSizeX, fieldSizeY);
         maxIterations += deltaIterStep;
-        zFunc.planeIterator();
+        //zFunc.planeIterator();
+        zFunc.altPlaneIterator();
         std::cout << "z function complete" << std::endl;
         std::vector<std::vector<int> > iterPlane = zFunc.getIterPlane();
 
