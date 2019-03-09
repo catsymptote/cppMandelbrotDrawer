@@ -108,9 +108,10 @@ void mathFunction::altPlaneIterator()
 
             int counter = 0;
             /// Find number path.
-            while( abs(z.Re) < 2.0 && abs(z.Im) < 2.0 ) // 2 should be changed to scopeMinX...
+            //while( !z < 2 )//abs(z.Re) < 2.0 && abs(z.Im) < 2.0 ) // 2 should be changed to scopeMinX...
+            while( inPlane(z) )
             {
-                if(counter > 128)
+                if(counter > 512)
                     break;
                 counter++;
 
@@ -123,6 +124,23 @@ void mathFunction::altPlaneIterator()
         //printf("%i\n", y);
     }
     iterPlane = tmpIterPlane;
+}
+
+
+bool mathFunction::inPlane(cplx z)
+{
+    bool in = true;
+
+    if(z.Re <= -2)//scopeMinX)
+        in = false;
+    if(z.Re >= 2)//scopeMinX + scopeX)
+        in = false;
+    if(z.Im <= -2)//scopeMinY)
+        in = false;
+    if(z.Im >= 2)//scopeMinY + scopeY)
+        in = false;
+
+    return in;
 }
 
 
