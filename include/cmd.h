@@ -39,6 +39,7 @@ namespace cmd
 
     void open(const char* fname)
     {
+        return; // Comment out to open image.
         std::string startCmd = "start " + outputDir + fname + outputFExt;
         char *startChr = &startCmd[0];
         std::cout << execCmd(startChr) << std::endl;
