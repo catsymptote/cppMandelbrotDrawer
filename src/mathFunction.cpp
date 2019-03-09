@@ -43,6 +43,9 @@ std::vector<std::vector<int> > mathFunction::getIterPlane()
 }
 
 
+
+
+/// Math iteration counter function.
 void mathFunction::planeIterator()
 {
     std::vector<std::vector<int> > tmpIterPlane = iterPlane;
@@ -80,6 +83,58 @@ double mathFunction::planePixelConverter(int pixel, int windowSize, double plane
 }
 
 
+
+/// Math iteration counter function.
+void mathFunction::altPlaneIterator()
+{
+    std::vector<std::vector<int> > tmpIterPlane = iterPlane;
+    double cplxPointX;
+    double cplxPointY;
+
+    /// Loop through pixel matrix.
+    for(int y = 0; y < yPix; y++)
+    {
+        for(int x = 0; x < xPix; x++)
+        {
+            /// Points to test in the complex plane.
+            cplxPointX = planePixelConverter(x, xPix, scopeMinX, scopeX);
+            cplxPointY = planePixelConverter(y, yPix, scopeMinY, scopeY);
+
+            /// Initial points z and c.
+            cplx c;
+            c.Re = cplxPointX;
+            c.Im = cplxPointY;
+            cplx z = c;
+
+            int counter = 0;
+            /// Find number path.
+            while( abs(z.Re) < 2.0 && abs(z.Im) < 2.0 ) // 2 should be changed to scopeMinX...
+            {
+                if(counter > 128)
+                    break;
+                counter++;
+
+                int z_x = pointToPixel(z.Re, xPix, scopeMinX, scopeX);
+                int z_y = pointToPixel(z.Im, yPix, scopeMinY, scopeY);
+                tmpIterPlane.at(z_y).at(z_x) ++;
+                z = mathFunction::zFunction(z, c);
+            }
+        }
+        //printf("%i\n", y);
+    }
+    iterPlane = tmpIterPlane;
+}
+
+
+// Convert one part of a point to a pixel value.
+int mathFunction::pointToPixel(double point, int maxPix, double scopeMin, double scope)
+{
+    return (int)(point * maxPix/scope - maxPix/scopeMin);
+}
+
+
+
+/// Standard Maldelbrot iteration function.
 int mathFunction::mandelbrot(cplx c)
 {
     cplx z = c;
