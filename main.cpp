@@ -50,13 +50,13 @@ int main()
 {
     std::cout << "Running..." << std::endl;
     /// Set variables
-    int imageWidth          = 512 + 1;
-    int imageHeight         = 512 + 1;
+    int imageWidth          = 8000 + 1;
+    int imageHeight         = 8000 + 1;
 
-    double fieldMinX        = -2.1;
-    double fieldMinY        = -2.1;
-    double fieldSizeX       = 4.2;
-    double fieldSizeY       = 4.2;
+    double fieldMinX        = -2.0;
+    double fieldMinY        = -2.0;
+    double fieldSizeX       = 4.0;
+    double fieldSizeY       = 4.0;
 
     std::string fnStart     = "img";
     std::string fExt        = ".ppm";
