@@ -111,7 +111,7 @@ void mathFunction::altPlaneIterator()
             //while( !z < 2 )//abs(z.Re) < 2.0 && abs(z.Im) < 2.0 ) // 2 should be changed to scopeMinX...
             while( inPlane(z) )
             {
-                if(counter > 512)
+                if(counter > 10000) // cut-off point
                     break;
                 counter++;
 
