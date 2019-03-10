@@ -11,7 +11,7 @@ from PIL import Image
 
 sizes   = [-2.0, -2.0, 2.0, 2.0]   # [minX, minY, maxX, maxY]
 res     = [500, 500]
-maxIter = 200
+maxIter = 100
 
 plane   = [ [0]*res[0] ]*res[1]
 xSpace  = sizes[2] - sizes[0]
@@ -52,40 +52,40 @@ def getIterations(c):
     return -1
 
 
+def getColor(iterations):
+    r = 0
+    g = 0
+    b = 0
+    if k >= 0:
+        b = k*5 + 100
+        if b > 255:
+            r = 255
+            g = 255
+            b = 255
+    return (r, g, b)
+#            r = b - 255
+#            g = b - 255
+#            b = 255
+#            if r > 255 or g > 255:
+#                r = 255
+#                g = 255
+
+#            g = b - 255
+#            if g > 255:
+#                r = g - 255
+#                if r > 255:
+#                   r = 255
+#                g = 255
+#            b = 255
+
+
 # Create rgb image array.
 rgb = []# * res[0] * res[1]
 for i in range(res[0]):
     for j in range(res[1]):
         c = planeCoords(j, i)
-        r = 0
-        g = 0
-        b = 0
         k = getIterations(c)
-        #print(k)
-        if k < 0:
-            rgb.append((0, 0, 0))
-        else:
-            b = k*5 + 100
-            if b > 255:
-                r = 255
-                g = 255
-                b = 255
-
-#                r = b - 255
-#                g = b - 255
-#                b = 255
-#                if r > 255 or g > 255:
-#                    r = 255
-#                    g = 255
-
-#                g = b - 255
-#                if g > 255:
-#                    r = g - 255
-#                    if r > 255:
-#                       r = 255
-#                    g = 255
-#                b = 255
-            rgb.append((r, g, b))
+        rgb.append(getColor(k))
 
 
 im = Image.new("RGB", (res[0], res[1]), color=0)
