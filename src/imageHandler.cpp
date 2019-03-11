@@ -43,7 +43,7 @@ int testPic[3*2*3] = {
 
 std::vector<int> imageHandler::vect2ToVect(std::vector<std::vector<int> > plane)
 {
-    int k = 2; // Color constant
+    int k = 5; // Color constant
     colorIterator cIter(k);
 
     std::vector<int> vect;

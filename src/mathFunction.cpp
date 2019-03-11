@@ -92,8 +92,14 @@ void mathFunction::altPlaneIterator()
     double cplxPointY;
 
     /// Loop through pixel matrix.
+    printf("Iterator initialized.\n");
+    printf("#####################\n");
     for(int y = 0; y < yPix; y++)
     {
+        if(y % (yPix/20) == 0)
+            printf("#");
+        if(y == yPix -1)
+            printf("\n");
         for(int x = 0; x < xPix; x++)
         {
             /// Points to test in the complex plane.
@@ -111,7 +117,7 @@ void mathFunction::altPlaneIterator()
             //while( !z < 2 )//abs(z.Re) < 2.0 && abs(z.Im) < 2.0 ) // 2 should be changed to scopeMinX...
             while( inPlane(z) )
             {
-                if(counter > 10000) // cut-off point
+                if(counter > 1000) // cut-off point
                     break;
                 counter++;
 
