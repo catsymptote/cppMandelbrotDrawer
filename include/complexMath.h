@@ -17,7 +17,7 @@ public:
     cplx    operator * (cplx p);
     cplx    operator / (cplx p);
     cplx    operator ^ (int exp);
-    double  operator ! ();
+    double  operator ~ ();
 
     // Real and imaginary variables
     double  Re;

@@ -164,7 +164,7 @@ int mathFunction::mandelbrot(cplx c)
     cplx z = c;
     for(int i = 0; i < iterations; i++)
     {
-        if(!z > 2)
+        if(~z > 2)
         {
             return i;
         }

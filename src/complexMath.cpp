@@ -94,7 +94,7 @@ cplx cplx::operator ^ (int exp)
     return q;
 }
 
-double cplx::operator ! ()
+double cplx::operator ~ ()
 {
     return this->radius();
 }
