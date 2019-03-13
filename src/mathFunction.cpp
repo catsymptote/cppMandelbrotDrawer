@@ -184,9 +184,9 @@ cplx mathFunction::zFunction(cplx z, cplx c)
 void mathFunction::debugVectorIntPrinter(std::vector<std::vector<int> > vect)
 {
     std::cout << "\nVector:\n";
-    for(int y = 0; y < vect.size(); y++)
+    for(unsigned int y = 0; y < vect.size(); y++)
     {
-        for(int x = 0; x < vect[y].size(); x++)
+        for(unsigned int x = 0; x < vect[y].size(); x++)
         {
             std::cout << vect.at(x).at(y) << " ";
         }

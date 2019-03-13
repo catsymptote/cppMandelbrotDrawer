@@ -47,9 +47,9 @@ std::vector<int> imageHandler::vect2ToVect(std::vector<std::vector<int> > plane)
     colorIterator cIter(k);
 
     std::vector<int> vect;
-    for(int y = 0; y < plane.size(); y++)
+    for(unsigned int y = 0; y < plane.size(); y++)
     {
-        for(int x = 0; x < plane.at(y).size(); x++)
+        for(unsigned int x = 0; x < plane.at(y).size(); x++)
         {
             int pixIter = plane.at(y).at(x);
 
@@ -77,11 +77,11 @@ void imageHandler::makeImgFile()
     std::ofstream imgFile(filePath);
     imgFile << magicNumber << "\n" << width << " " << height << "\n" << colorRange << "\n";
 
-    int pixPerLine = 10;
-    int pixSize = 3;    // RGB == 3, RGBA == 4
-    int counter = 0;
+    //int pixPerLine = 10;
+    unsigned int pixSize = 3;    // RGB == 3, RGBA == 4
+    //int counter = 0;
 
-    for(int x = 0; x < ppmVector.size(); x++)
+    for(unsigned int x = 0; x < ppmVector.size(); x++)
     {
         imgFile << ppmVector.at(x);
         if(x%pixSize != pixSize -1)

@@ -65,7 +65,7 @@ int main()
     int maxIterations       = 512;
     int outputImages        = 1;
     int deltaIterStep       = 1;
-    int totalSteps          = outputImages + maxIterations;
+    //int totalSteps          = outputImages + maxIterations;
 
 
     for (int i = 0; i < outputImages; i++)
