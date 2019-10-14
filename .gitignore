@@ -3,6 +3,10 @@
 ###########
 _doc/
 TODO!!! .txt
+.vscode/
+C_sharp_converter/
+.gitattributes
+
 
 ############
 ## Images ##
