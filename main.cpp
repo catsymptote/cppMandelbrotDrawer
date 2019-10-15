@@ -50,8 +50,8 @@ int main()
 {
     std::cout << "Running..." << std::endl;
     /// Set variables
-    int imageWidth          = 8000 + 1;
-    int imageHeight         = 8000 + 1;
+    int imageWidth          = 512 + 1;
+    int imageHeight         = 512 + 1;
 
     double fieldMinX        = -2.0;
     double fieldMinY        = -2.0;
@@ -62,7 +62,7 @@ int main()
     std::string fExt        = ".ppm";
     std::string tmpDir      = "imgTmp\\";
 
-    int maxIterations       = 512;
+    int maxIterations       = 128;
     int outputImages        = 1;
     int deltaIterStep       = 1;
     //int totalSteps          = outputImages + maxIterations;
@@ -93,7 +93,7 @@ int main()
 
     /// Compile images to png
     std::cout << "\nPython:" << std::endl;
-    std::cout << cmd::execCmd("python ppmToPng.py") << std::endl;
+    std::cout << cmd::execCmd("pipenv run ppmToPng.py") << std::endl;
 
     for (int i = 0; i < outputImages; i++)
     {
