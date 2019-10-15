@@ -31,7 +31,7 @@ namespace cmd
 
     void mov(const char* fname)
     {
-        std::string mvCmd = "mv " + tmpDir + fname + outputFExt + " " + outputDir + fname + outputFExt;
+        std::string mvCmd = "move " + tmpDir + fname + outputFExt + " " + outputDir + fname + outputFExt;
         char *mvChr = &mvCmd[0];
         std::cout << execCmd(mvChr) << std::endl;
     }
