@@ -34,12 +34,20 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/ImageConstructor.h" />
+		<Unit filename="include/Tester.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="include/cmd.h" />
 		<Unit filename="include/colorIterator.h" />
 		<Unit filename="include/complexMath.h" />
 		<Unit filename="include/imageHandler.h" />
 		<Unit filename="include/mathFunction.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/ImageConstructor.cpp" />
+		<Unit filename="src/Tester.cpp">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="src/colorIterator.cpp" />
 		<Unit filename="src/complexMath.cpp" />
 		<Unit filename="src/imageHandler.cpp" />
