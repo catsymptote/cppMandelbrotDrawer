@@ -176,7 +176,11 @@ int mathFunction::mandelbrot(cplx c)
 
 cplx mathFunction::zFunction(cplx z, cplx c)
 {
-    return (z^2) + c;
+    //return (z^2) + c; //old version. New version below.
+    cplx z_new;
+    z_new.Re = z.Re * z.Re - z.Im * z.Im + c.Re;
+    z_new.Im = 2 * z.Re * z.Im + c.Im;
+    return z_new;
 }
 
 

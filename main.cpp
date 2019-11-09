@@ -50,8 +50,8 @@ int main()
 {
     std::cout << "Running..." << std::endl;
     /// Set variables
-    int imageWidth          = 512 + 1;
-    int imageHeight         = 512 + 1;
+    int imageWidth          = 1024 + 1;
+    int imageHeight         = 1024 + 1;
 
     double fieldMinX        = -2.0;
     double fieldMinY        = -2.0;
