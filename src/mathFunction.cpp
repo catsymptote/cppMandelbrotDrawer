@@ -158,7 +158,7 @@ int mathFunction::pointToPixel(double point, int maxPix, double scopeMin, double
 
 
 
-/// Standard Maldelbrot iteration function.
+/// Standard Mandelbrot iteration function.
 int mathFunction::mandelbrot(cplx c)
 {
     cplx z = c;
