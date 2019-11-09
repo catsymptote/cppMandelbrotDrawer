@@ -11,6 +11,7 @@
 class mathFunction
 {
     public:
+        mathFunction();
         mathFunction(int iterations, int xPix, int yPix,
             double scopeMinX, double scopeMinY, double scopeX, double scopeY);
         virtual ~mathFunction();
@@ -18,6 +19,7 @@ class mathFunction
         void altPlaneIterator();
         void planeIterator();
         std::vector<std::vector<int> > getIterPlane();
+        cplx zFunction(cplx z, cplx c); // public for testing purposes #theProperWay
 
     protected:
 
@@ -31,7 +33,7 @@ class mathFunction
         bool inPlane(cplx z);
         int pointToPixel(double point, int maxPix, double scopeMin, double scope);
         int mandelbrot(cplx c);
-        cplx zFunction(cplx z, cplx c);
+
 
         void debugVectorIntPrinter(std::vector<std::vector<int> > vect);
 };

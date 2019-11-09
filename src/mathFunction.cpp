@@ -1,6 +1,12 @@
 #include "mathFunction.h"
 
 
+mathFunction::mathFunction()
+{
+    //ctor
+}
+
+
 mathFunction::mathFunction(int iterations, int xPix, int yPix,
         double scopeMinX, double scopeMinY, double scopeX, double scopeY)
 {
